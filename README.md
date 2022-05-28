@@ -76,6 +76,8 @@
 
 ## DB & SQL
 
+- **정규화**
+
 - **Index** <br/>
 
 - **Transaction** <br/>
