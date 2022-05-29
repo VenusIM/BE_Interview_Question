@@ -22,27 +22,46 @@
 - **Enum** <br/> 열거형이라고 불리며 서로 연관된 상수들의 집합입니다. 코드가 단순해지며 가독성이 좋아지고 타입의 안정성이 보장됩니다.
 
 - **Access Modifier, 사용하는 이유** <br/>
-  - Public
-  - Private
-  - Protected
-  - Default
+  - Public : 누구나 접근 가능 (공용화장실의 느낌)
+  - Private : Class 내에서만 접근 가능
+  - Protected : 상속 관계 내에서 접근 가능
+  - Default : 동일 패키지 내에서 접근가능
+  - 객체의 로직을 보호하기 위해서 외부의 접근을 허용하거나 차단하는 보안목적으로 사용 접근 가능한 범위의 제한을 두며 Error 발생시 범위 내에서 확인 가능하다는 장점이 있습니다.
 
-- **Collaction** <br/>
-  - List
-  - Set
-  - Map
-
+- **Collections Framework** <br/>
+  - List : 순서가 있는 데이터의 집합으로 데이터의 중복을 허용합니다.
+  - Set : 순서를 유지하지 않는 데이터의 집합으로 데이터의 중복을 허용하지 않습니다.
+  - Map : Key, Value의 쌍으로 이루어진 데이터의 집합으로, 순서는 유지되지 않으며 key의 중복을 허용하지 않으나 Value의 중복은 허용합니다.
+  
 - **Array, LinkedList** <br/>
+  - Array
+    - index를 통해 직접적으로 접근할 수 있으며 시간 복잡도는 O(1)입니다.
+    - 연속적이고 고정적이기 때문에 많은 시간을 소모합니다.
+  - LinkedList
+    - 특정 element에 접근할 때의 시간 복잡도는 O(n)입니다.
+    - 이전 Node에 Memory 위치의 주소를 저장하기 떄문에 삽입, 삭제 연산이 빠릅니다.
 
-- **Array, Map** <br/>
-
-- **StringBuilder, StringBuffer** <br/>
-
+- **String, StringBuilder, StringBuffer** <br/>
+  - 불변성 : String
+  - 가변성 : StringBuilder, StringBuffer
+    - StringBulider : 동기화를 고려하지 않을 때 사용하며, StringBuffer에 비해  단일 쓰레드 성능이 빠릅니다.
+    - StringBuffer : 동기화를 고려해야 할때 사용하며, String과 마찬가지로 멀티쓰레드 환경에서 안정성을 보장합니다.
+  
 ## Web
 
 - **IOC** <br/>
+  - 객체의 생명주기를 개발자가 제어했다면, 모듈을 제공해 주기 때문에 제어권이 프레임워크로 넘어갔다는 개념입니다.
 
 - **DI** <br/>
+  - xml을 통한 설정, component-scan, 
+  - 모듈 간의 결합도가 낮아지고 유연성이 높아집니다.
+  - Field Injection
+    - 단일 책임의 원칙 위반합니다.
+    - final을 선언할 수 없어 불변성이 보장되지 않습니다.
+    - 순환 참조가 발생할 가능성이 있습니다.
+  - Setter Injection
+    - 주입이 필요한 객체가 주입되지 않아도 객체를 생성할 수 있는 문제가 있습니다. 
+   - 따라서 Constructror based Injection을 선호합니다.
 
 - **DI 방식과 선호하는 방식과 이유**
 
