@@ -64,7 +64,9 @@
     - 주입이 필요한 객체가 주입되지 않아도 객체를 생성할 수 있는 문제가 있습니다. 
    - 따라서 Constructror based Injection을 선호합니다.
 
-- **REST** <br/> REST는 자원, 행위, 표현으로 구성된 API 아키텍쳐이다. URI를 통해서 자원을 명시하고, POST, GET, PUT, PATCH 등의 Method를 통해 자원의 행위를 지정합니다. 코드의 재사용성을 높일 수 있고, 프론트와 백엔드의 완전한 분업이 가능해진다는 장점이 있습니다.
+- **REST** <br/> 
+  - REST는 자원, 행위, 표현으로 구성된 API 아키텍쳐이다. URI를 통해서 자원을 명시하고, POST, GET, PUT, PATCH 등의 Http Protocol을 그대로 활용하기 떄문에 웹의 장점을 최대한 활용할 수 있습니다. 코드의 재사용성을 높일 수 있고, 프론트와 백엔드의 완전한 분업이 가능해진다는 장점이 있습니다.
+    - CRUD기능을 모두 POST로 처리하는 API나 Route에 resource, id 외의 정보가 들어가는 경우 등에 Restful하지 못하다고 할수 있다. 
 
 - **SpringBoot** <br/>
   - 라이브러리 버전 관리를 자동화합니다 (빌드 툴에 버전을 명시하지 않아도 됩니다).
@@ -75,7 +77,12 @@
 - **Spring WebFlux** <br/>
   - Spring 5에 새롭게 추가된 reactive 스타일의 web framework입니다.
     - 고성능이며 Spring과 완벽한 통합, netty지원, async non-blocking 메세지 처리의 장점이 있습니다. 
+    - 
 - **JPA** <br/>
+  - Java진영에서 ORM 기술 표준으로 사용되는 인터페이스 모음입니다. 대표적인 오픈 소스로 Hibernate가 있습니다.
+    - ORM이란 Class와 RDB의 테이블 매핑을 한다는 뜻으로 자동으로 영속화 해주는 것입니다.
+    - 영속성 컨텍스트가 존재하는 한, 1차 캐시를 통해 해당 엔티티를 계속해서 보관하여, 사용할 수 있습니다.
+    - JPA 기본 패치 전략으로, 연관된 엔티티가 하나일 경우에는 (OneToOne, ManyToOne) 즉시로딩, 컬렉션일 경우에는 (OneToMany, ManyToMany) 지연로딩입니다. 엔티티 하나를 조인으로 가져오는 것이, 데이터베이스 한번더 접근하는 것보다 성능상의 이점이 좋기 때문에 즉시로딩입니다.
 
 - **Mybatis** <br/>
   
@@ -84,8 +91,12 @@
 - **Junit을 사용한 이유와 적용했던 사례** <br/>
 
 - **Debugging** <br/>
+  - AspectJ를 이용하였습니다.
 
 - **SocketJS, STOMP** <br/>
+  - Ajax, Websocket 등 다양한 기술이 있지만 Spring 진영에서 Websocket을 지원하면서 STOMP와 SOCKJS Protocol에 대한 자원을 제공하기 때문에 채택하게 되었습니다. 단편으로는 Spring에 의존적인 개발이 됩니다.
+  - STOMP
+    - 여러 브로커로 커스터마이징이 가능하고, 메세지 포멧을 정할 필요가 없다는 장점이 있습니다.
 
 - **WebRTC** <br/>
 
@@ -94,9 +105,25 @@
 ## CS / Algorithm
 
 - **Process, Thread** <br/>
-
+  - Process : 운영체제로부터 시스템 자원을 할당받는 작업의 단위입니다.
+  - Thread : 한 프로세스 내에서 동작되는 여러 실행의 흐름으로 Heap, Data, Code 영역을 공유합니다.
 - **Multi-Process, Multi-Thread** <br/>
+  - Multi-Porcess 
+    - 병렬 처리 구조로 하나의 프로세스에 문제가 발생해도 다른 프로세스는 정상적인 독립적인 특성이있습니다.
+    - 생성 및 컨텍스트 스위칭으로 인한 성능 저하의 문제가 있습니다.
+    - 대표적인 예로 Apache Web Sever가 있습니다. 커스텀을 통해 Multi-Thread 방식을 이용할 수 있습니다.
+  - Multi-Thread
+    - context switching이 빠르게 일어나면서, 사용자의 시선에서는 동시 다발적으로 수행되는 것처럼 보입니다.
+    - 동시성으로 인해 Dead Lock이 발생 할 수 있습니다.
+    -  임계영역이라는 개념이 등장하며, 한 Thread가 작업이 끝나기 전까지 lock을 걸어 다른 Thread가 사용하지 못하도록 합니다.
+    - 자바 진영에서는 synchronized로 제공하고 있습니다.
 
+- **DeadLock**
+  - 상호배제
+  - 점유대기
+  - 비선점
+  - 환형대기
+  
 - **Stack** <br/>
 
 - **Queue, Heap** <br/>
@@ -121,6 +148,10 @@
 - **GitLab**
 
 ## 네트워크
+
+- **Http/Https**
+  - 두 개념의 가장 큰 차이는 보안키 적용의 유무입니다.
+  - Https의 경우 공개키와 비공개키 모두 사용하며, 최초 1회 공개키 교환을 위해 비공개키를 이용하고 이후 공개키를 이용하여 통신합니다.
 
 - **TCP/UDP**
 
